@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Restaurant } from "@prisma/client";
-import { ChevronLeftIcon } from "lucide-react";
+import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -33,8 +33,10 @@ const RestaurantHeader = ({ restaurant }: RestaurantHeaderProps) => {
       <Button
         variant="secondary"
         size="icon"
-        className="absolute left-4 top-4 z-50 rounded-full"
-      ></Button>
+        className="absolute right-4 top-4 z-50 rounded-full"
+      >
+        <ScrollTextIcon />
+      </Button>
     </div>
   );
 };
