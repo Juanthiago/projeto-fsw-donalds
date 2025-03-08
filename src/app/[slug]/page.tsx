@@ -13,7 +13,6 @@ const RestaurantPage = async ({ params }: RestaurantPagePropps) => {
   if (!restaurant) {
     return notFound();
   }
-
   return (
     <div className="flex h-screen flex-col items-center justify-center px-6 pt-24">
       <div className="flex flex-col items-center gap-2">
@@ -53,6 +52,5 @@ const RestaurantPage = async ({ params }: RestaurantPagePropps) => {
     </div>
   );
 };
-console.log(ConsumptionMethodOption);
 
 export default RestaurantPage;

@@ -1,5 +1,5 @@
 "use client";
-import { CartContext } from "../../../contexts/cart";
+import { CartContext } from "../../contexts/cart";
 
 import { Prisma } from "@prisma/client";
 import Image from "next/image";
@@ -92,7 +92,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
             {/* SOBRE */}
             <div className="mt-6 space-y-3">
               <h4 className="font-semibold">Sobre</h4>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground leading-tight">
                 {product.description}
               </p>
             </div>
@@ -111,7 +111,10 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
           </ScrollArea>
         </div>
 
-        <Button className="w-full roudend-full" onClick={handleAddToCart}>
+        <Button
+          className="w-full roudend-full mt-5 gap-1"
+          onClick={handleAddToCart}
+        >
           Adicionar á sacola
         </Button>
         <CartSheet />

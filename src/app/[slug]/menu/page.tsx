@@ -8,7 +8,10 @@ interface RestaurantMenuProps {
   searchParams: Promise<{ consumptionMethod: string }>;
 }
 
-const isConsumptionMethodValid = (consumptionMethod: string) => {
+const isConsumptionMethodValid = (consumptionMethod: string | undefined) => {
+  if (!consumptionMethod) {
+    return false;
+  }
   return ["DINE_IN", "TAKEAWAY"].includes(consumptionMethod.toUpperCase());
 };
 

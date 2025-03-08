@@ -13,6 +13,7 @@ interface ProductHeaderProps {
 
 const ProductHeader = ({ product }: ProductHeaderProps) => {
   const router = useRouter();
+  console.log(ProductHeader);
   const handleBackClick = () => router.back();
   return (
     <div className="relative min-h-[300px] w-full">
