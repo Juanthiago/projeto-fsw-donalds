@@ -9,7 +9,7 @@ const poppins = Poppins({
   subsets: ["latin"],
 });
 export const metadata: Metadata = {
-  title: "Essa pagina será Home para o Restaurant ",
+  title: "Restaurante Token ",
   description: "Pagina inicial para o restaurant se cadastrar",
 };
 
