@@ -10,6 +10,7 @@ import {
 import { CartContext } from "../contexts/cart";
 import { Card, CardContent } from "@/components/ui/card";
 import { formatCurrency } from "@/helpers/formart-currency";
+import CartProductItem from "./cart-product-item";
 
 const CartSheet = () => {
   const { isOpen, toggleCart, products, total } = useContext(CartContext);
@@ -22,9 +23,7 @@ const CartSheet = () => {
         <div className="flex h-full flex-col py-5">
           <div className="flex-auto">
             {products.map((product) => (
-              <h1 key={product.id}>
-                {product.name} - {product.quantity}
-              </h1>
+              <CartProductItem key={product.id} product={product} />
             ))}
           </div>
           <Card className="mb-6">
