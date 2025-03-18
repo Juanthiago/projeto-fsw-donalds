@@ -1,5 +1,4 @@
-"use serve";
-
+"use server";
 import { ConsumptionMethod } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { db } from "@/lib/prisma";
