@@ -9,7 +9,7 @@ import { removeCpfPunctuation } from "../helpers/cpf";
 interface CreateOrdersInput {
   customerName: string;
   customerCpf: string;
-  product: Array<{
+  products: Array<{
     id: string;
     quantity: number;
   }>;
@@ -29,11 +29,11 @@ export const createOrder = async (input: CreateOrdersInput) => {
   const productWithPrices = await db.product.findMany({
     where: {
       id: {
-        in: input.product.map((product) => product.id),
+        in: input.products.map((product) => product.id),
       },
     },
   });
-  const productWithPricesAndQuatities = input.product.map((product) => ({
+  const productWithPricesAndQuatities = input.products.map((product) => ({
     productId: product.id,
     quantity: product.quantity,
     price: productWithPrices.find((p) => p.id === product.id)!.price,
