@@ -6,10 +6,10 @@ import { z } from "zod";
 import { useParams, useSearchParams } from "next/navigation";
 import { useContext, useState } from "react";
 import { CartContext } from "../contexts/cart";
-import { Form, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { ConsumptionMethod } from "@prisma/client";
 import { createOrder } from "../actions/create-orders";
-import { createstripeCheckout } from "../actions/create-stripe-checkout";
+import { createStripeCheckout } from "../actions/create-stripe-checkout"; // Corrigido o nome da função
 import {
   Drawer,
   DrawerClose,
@@ -21,6 +21,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import {
+  Form,
   FormControl,
   FormField,
   FormItem,
@@ -35,14 +36,13 @@ import { Input } from "@/components/ui/input";
 
 const formschema = z.object({
   name: z.string().trim().min(1, {
-    message: "Nome é obrigatorio",
+    message: "Nome é obrigatório",
   }),
-
   cpf: z
     .string()
     .trim()
     .min(1, {
-      message: "O CPF é obrigatorio",
+      message: "O CPF é obrigatório",
     })
     .refine((value) => isValidCpf(value), {
       message: "CPF inválido",
@@ -60,7 +60,8 @@ const FinishOrderDialog = ({ open, onOpenChange }: FinishOrderDialogProps) => {
   const { slug } = useParams<{ slug: string }>();
   const { products } = useContext(CartContext);
   const searchParams = useSearchParams();
-  const [isLoanding, setIsLoanding] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const form = useForm<FormSchema>({
     resolver: zodResolver(formschema),
     defaultValues: {
@@ -69,9 +70,10 @@ const FinishOrderDialog = ({ open, onOpenChange }: FinishOrderDialogProps) => {
     },
     shouldUnregister: true,
   });
+
   const onSubmit = async (data: FormSchema) => {
     try {
-      setIsLoanding(true);
+      setIsLoading(true);
       const consumptionMethod = searchParams.get(
         "consumptionMethod"
       ) as ConsumptionMethod;
@@ -83,7 +85,7 @@ const FinishOrderDialog = ({ open, onOpenChange }: FinishOrderDialogProps) => {
         products,
         slug,
       });
-      const { sessionId } = await createstripeCheckout({
+      const { sessionId } = await createStripeCheckout({
         products,
         orderId: order.id,
         slug,
@@ -100,7 +102,7 @@ const FinishOrderDialog = ({ open, onOpenChange }: FinishOrderDialogProps) => {
     } catch (error) {
       console.error(error);
     } finally {
-      setIsLoanding(false);
+      setIsLoading(false);
     }
   };
   return (
@@ -123,7 +125,7 @@ const FinishOrderDialog = ({ open, onOpenChange }: FinishOrderDialogProps) => {
                   <FormItem>
                     <FormLabel>Seu Nome</FormLabel>
                     <FormControl>
-                      <input placeholder="Digite seu nome..." {...field} />
+                      <Input placeholder="Digite seu nome..." {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -134,7 +136,7 @@ const FinishOrderDialog = ({ open, onOpenChange }: FinishOrderDialogProps) => {
                 name="cpf"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Seu CPF </FormLabel>
+                    <FormLabel>Seu CPF</FormLabel>
                     <FormControl>
                       <PatternFormat
                         placeholder="Digite seu CPF..."
@@ -153,9 +155,10 @@ const FinishOrderDialog = ({ open, onOpenChange }: FinishOrderDialogProps) => {
                   type="submit"
                   variant="destructive"
                   className="rounded-full"
-                  disabled={isLoanding}
+                  disabled={isLoading}
+                  aria-label="Finalizar pedido"
                 >
-                  {isLoanding && <Loader2Icon className="animate-spin" />}
+                  {isLoading && <Loader2Icon className="animate-spin" />}
                   Finalizar
                 </Button>
                 <DrawerClose asChild>

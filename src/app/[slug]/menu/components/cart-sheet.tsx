@@ -31,7 +31,7 @@ const CartSheet = () => {
           </div>
           <Card className="mb-6">
             <CardContent className="p-5">
-              <div className="flex justify-betwenn">
+              <div className="flex justify-between">
                 <p className="text-sm text-muted-foreground">Total</p>
                 <p className="text-sm font-semibold">{formatCurrency(total)}</p>
               </div>

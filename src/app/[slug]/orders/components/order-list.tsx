@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { OrderStatus, Prisma } from "@prisma/client";
@@ -70,7 +72,7 @@ const OrderList = ({ orders }: OrderListProps) => {
                 <Image
                   src={order.restaurant.avatarImageUrl}
                   alt={order.restaurant.name}
-                  className="roudend-sm"
+                  className="rouded-sm"
                   fill
                 />
                 <p className="text-sm font-semibold">{order.restaurant.name}</p>

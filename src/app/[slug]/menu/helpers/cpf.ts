@@ -3,37 +3,30 @@ export const removeCpfPunctuation = (cpf: string) => {
 };
 
 export const isValidCpf = (cpf: string): boolean => {
-  // Remove caracteres não numéricos
+  if (typeof cpf !== "string") {
+    throw new Error("Input must be a string");
+  }
+
   cpf = cpf.replace(/\D/g, "");
 
-  // Verifica se o CPF tem 11 dígitos
-  if (cpf.length !== 11) {
-    return false;
-  }
-  // Elimina CPFs com todos os dígitos iguais (ex: 000.000.000-00)
-  if (/^(\d)\1+$/.test(cpf)) {
+  if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) {
     return false;
   }
 
-  // Cálculo do primeiro dígito verificador
-  let sum = 0;
-  for (let i = 0; i < 9; i++) {
-    sum += parseInt(cpf.charAt(i));
-  }
-  let firstVerifier = (sum * 10) % 11;
-  firstVerifier = firstVerifier === 10 ? 0 : firstVerifier;
+  const calculateVerifier = (cpf: string, factor: number) => {
+    let sum = 0;
+    for (let i = 0; i < factor - 1; i++) {
+      sum += parseInt(cpf.charAt(i)) * (factor - i);
+    }
+    const verifier = (sum * 10) % 11;
+    return verifier === 10 ? 0 : verifier;
+  };
 
+  const firstVerifier = calculateVerifier(cpf, 10);
   if (firstVerifier !== parseInt(cpf.charAt(9))) {
     return false;
   }
 
-  // Cálculo do segundo dígito verificador
-  sum = 0;
-  for (let i = 0; i < 10; i++) {
-    sum += parseInt(cpf.charAt(i)) * (11 - i);
-  }
-  let secondVerifier = (sum * 10) % 11;
-  secondVerifier = secondVerifier === 10 ? 0 : secondVerifier;
-
+  const secondVerifier = calculateVerifier(cpf, 11);
   return secondVerifier === parseInt(cpf.charAt(10));
 };

@@ -15,7 +15,7 @@ interface CreateStripeChekoutInput {
   cpf: string;
 }
 
-export const createstripeCheckout = async ({
+export const createStripeCheckout = async ({
   products,
   orderId,
   slug,

@@ -1,6 +1,8 @@
+"use client";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { usePathname, useRouter } from "next/navigation";
-import { Form, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { isValidCpf, removeCpfPunctuation } from "../../menu/helpers/cpf";
 import {
@@ -13,6 +15,7 @@ import {
   DrawerTitle,
 } from "@/components/ui/drawer";
 import {
+  Form,
   FormControl,
   FormField,
   FormItem,

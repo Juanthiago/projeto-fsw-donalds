@@ -46,7 +46,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   };
   return (
     <>
-      <div className="relative z-50 mt-[-1.5rem] flex flex-col overflow-hidden roundend-t-3x1 p-5">
+      <div className="relative z-50 mt-[-1.5rem] flex flex-col overflow-hidden rounded-t-3x1 p-5">
         <div className="flex-auto overflow-hidden">
           {/* Restaurant */}
           <div className="flex items-center gap-1.5">
@@ -55,7 +55,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
               alt={product.restaurant.name}
               width={16}
               height={16}
-              className="roudend-fill"
+              className="roudend-full"
             />
             <p className="text-xs text-muted-foreground">
               {product.restaurant.name}
@@ -72,7 +72,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
             <div className="flex items-center gap-2 text-center">
               <Button
                 variant="outline"
-                className="h-8 w-8 roudend-xl"
+                className="h-8 w-8 rounded-xl"
                 onClick={handleDecreaseQuantity}
               >
                 <ChevronLeftIcon />
@@ -80,7 +80,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
               <p className="w-4">{quantity}</p>
               <Button
                 variant="destructive"
-                className="h8 w-8 roudend-xl"
+                className="h-8 w-8 roudend-xl"
                 onClick={handleIncreaseQuantity}
               >
                 <ChevronRightIcon />
@@ -102,8 +102,8 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
                 <ChefHatIcon size={18} />
                 <h4 className="font-semibold">Ingredientes</h4>
               </div>
-              <ul className="text-mude-fo list-disc px-5 text-sm text-muted-foreground">
-                {product.ingredients.map((ingredient) => (
+              <ul className="list-disc px-5 text-sm text-muted-foreground">
+                {product.ingredients?.map((ingredient) => (
                   <li key={ingredient}>{ingredient}</li>
                 ))}
               </ul>
