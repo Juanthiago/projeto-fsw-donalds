@@ -40,11 +40,10 @@ O **FSW Donalds** é uma aplicação web que simula um sistema de pedidos de um 
    ```
 
 2. Instale as dependências:
+
    npm install
-
-# ou
-
-yarn install
+   ou
+   yarn install
 
 3. Configure as variáveis de ambiente:
 
@@ -56,14 +55,17 @@ yarn install
    STRIPE_WEBHOOK_SECRET="seu-segredo-de-webhook-do-stripe"
 
 4. Execute as migrações do Prisma:
+
    npx prisma migrate dev --name init
 
 5. Inicie o servidor de desenvolvimento:
+
    npm run dev
    ou
    yarn dev
 
 6. Acesse a aplicação no navegador:
+
    http://localhost:3000
 
 ## Estrutura do Projeto
