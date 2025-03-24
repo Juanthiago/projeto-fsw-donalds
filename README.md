@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FSW Donalds - Projeto de Restaurante com Compra via Token
 
-## Getting Started
+Bem-vindo ao **FSW Donalds**, um projeto de restaurante moderno que permite aos clientes fazerem pedidos e pagamentos utilizando tokens. Este projeto foi desenvolvido com **Next.js**, **TypeScript** e **Tailwind CSS** para oferecer uma experiência de usuário rápida e responsiva.
 
-First, run the development server:
+## Visão Geral
 
-```bash
-npm run dev
-# or
+O **FSW Donalds** é uma aplicação web que simula um sistema de pedidos de um restaurante, onde os usuários podem escolher entre diferentes opções de refeições, personalizar seus pedidos e finalizar a compra utilizando tokens. O projeto foi desenvolvido com foco em boas práticas de desenvolvimento, escalabilidade e segurança.
+
+## Funcionalidades Principais
+
+- **Escolha de Refeições**: Os usuários podem selecionar entre diversas opções de refeições, como hambúrgueres, acompanhamentos e bebidas.
+- **Personalização de Pedidos**: Os clientes podem personalizar seus pedidos de acordo com suas preferências.
+- **Compra via Token**: O sistema permite que os usuários realizem pagamentos utilizando tokens, oferecendo uma forma segura e eficiente de finalizar a compra.
+- **Interface Responsiva**: A interface foi desenvolvida com Tailwind CSS, garantindo uma experiência consistente em diferentes dispositivos.
+
+## Tecnologias Utilizadas
+
+- **Next.js**: Framework React para renderização do lado do servidor (SSR) e geração de sites estáticos (SSG).
+- **TypeScript**: Superset de JavaScript que adiciona tipagem estática ao código, melhorando a segurança e a manutenibilidade.
+- **Tailwind CSS**: Framework CSS utilitário para criar designs responsivos e personalizados de forma eficiente.
+- **Prisma**: ORM (Object-Relational Mapping) para gerenciar o banco de dados de forma segura e eficiente.
+- **Stripe**: Plataforma de pagamentos utilizada para processar transações com tokens.
+
+## Configuração do Projeto
+
+### Pré-requisitos
+
+- Node.js (v18 ou superior)
+- npm ou yarn
+- Banco de dados PostgreSQL
+
+### Instalação
+
+1. Clone o repositório:
+
+   ```bash
+   git clone https://github.com/seu-usuario/fsw-donalds.git
+   cd fsw-donalds
+
+   ```
+
+2. Instale as dependências:
+   npm install
+
+# ou
+
+yarn install
+
+3. Configure as variáveis de ambiente:
+   Crie um arquivo .env na raiz do projeto e adicione as seguintes variáveis:
+   DATABASE_URL="postgresql://usuario:senha@localhost:5432/nome-do-banco"
+   STRIPE_SECRET_KEY="sua-chave-secreta-do-stripe"
+   NEXT_PUBLIC_STRIPE_PUBLIC_KEY="sua-chave-publica-do-stripe"
+   STRIPE_WEBHOOK_SECRET="seu-segredo-de-webhook-do-stripe"
+
+4. Execute as migrações do Prisma:
+   npx prisma migrate dev --name init
+
+5. Inicie o servidor de desenvolvimento:
+   npm run dev
+
+# ou
+
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+6. Acesse a aplicação no navegador:
+   http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Estrutura do Projeto
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+    /components: Contém os componentes reutilizáveis da aplicação.
 
-## Learn More
+    /pages: Define as rotas da aplicação com base na estrutura de arquivos.
 
-To learn more about Next.js, take a look at the following resources:
+    /prisma: Contém o esquema do banco de dados e as migrações.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    /styles: Inclui estilos globais e personalizados.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    /utils: Funções utilitárias e helpers.
 
-## Deploy on Vercel
+Contribuição
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contribuições são bem-vindas! Se você deseja contribuir para o projeto, siga os passos abaixo:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    Faça um fork do repositório.
+
+    Crie uma branch para sua feature (git checkout -b feature/nova-feature).
+
+    Commit suas mudanças (git commit -m 'Adiciona nova feature').
+
+    Push para a branch (git push origin feature/nova-feature).
+
+    Abra um Pull Request.
+
+Contato
+
+Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato:
+
+    Email: juanthiago20144@hotmail.com
+
+    GitHub: Juanthiago
