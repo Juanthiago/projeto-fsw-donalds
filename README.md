@@ -50,8 +50,11 @@ O **FSW Donalds** é uma aplicação web que simula um sistema de pedidos de um 
    Crie um arquivo .env na raiz do projeto e adicione as seguintes variáveis:
 
    DATABASE_URL="postgresql://usuario:senha@localhost:5432/nome-do-banco"
+
    STRIPE_SECRET_KEY="sua-chave-secreta-do-stripe"
+
    NEXT_PUBLIC_STRIPE_PUBLIC_KEY="sua-chave-publica-do-stripe"
+
    STRIPE_WEBHOOK_SECRET="seu-segredo-de-webhook-do-stripe"
 
 4. Execute as migrações do Prisma:
