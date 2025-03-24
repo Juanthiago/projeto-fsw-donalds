@@ -47,7 +47,9 @@ O **FSW Donalds** é uma aplicação web que simula um sistema de pedidos de um 
 yarn install
 
 3. Configure as variáveis de ambiente:
+
    Crie um arquivo .env na raiz do projeto e adicione as seguintes variáveis:
+
    DATABASE_URL="postgresql://usuario:senha@localhost:5432/nome-do-banco"
    STRIPE_SECRET_KEY="sua-chave-secreta-do-stripe"
    NEXT_PUBLIC_STRIPE_PUBLIC_KEY="sua-chave-publica-do-stripe"
@@ -58,15 +60,13 @@ yarn install
 
 5. Inicie o servidor de desenvolvimento:
    npm run dev
-
-# ou
-
-yarn dev
+   ou
+   yarn dev
 
 6. Acesse a aplicação no navegador:
    http://localhost:3000
 
-Estrutura do Projeto
+## Estrutura do Projeto
 
     /components: Contém os componentes reutilizáveis da aplicação.
 
@@ -78,7 +78,7 @@ Estrutura do Projeto
 
     /utils: Funções utilitárias e helpers.
 
-Contribuição
+## Contribuição
 
 Contribuições são bem-vindas! Se você deseja contribuir para o projeto, siga os passos abaixo:
 
@@ -92,7 +92,7 @@ Contribuições são bem-vindas! Se você deseja contribuir para o projeto, siga
 
     Abra um Pull Request.
 
-Contato
+## Contato
 
 Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato:
 
